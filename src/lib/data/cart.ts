@@ -233,7 +233,15 @@ export async function initiatePaymentSession(
   }
 
   return sdk.store.payment
-    .initiatePaymentSession(cart, data, {}, headers)
+    .initiatePaymentSession(
+      cart,
+      {
+        provider_id: data.provider_id,
+        data: data.context,
+      },
+      {},
+      headers
+    )
     .then(async (resp) => {
       const cartCacheTag = await getCacheTag("carts")
       revalidateTag(cartCacheTag)
@@ -465,5 +473,5 @@ export async function listCartOptions() {
 }
 
 export async function clearCartCookie() {
-  await removeCartId();
+  await removeCartId()
 }

@@ -128,7 +128,6 @@ export const RazorpayPaymentButton = ({
     session?.amount,
     session?.provider_id,
   ])
-  // console.log("orderData" + JSON.stringify(orderData))
   return (
     <>
       <Button
